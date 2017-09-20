@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>picker</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body ng-app="appTest" ng-controller="appvc">
+
+<div class="content">
+
+    <!--input[button] 触发 file click事件-->
+    <button class="mybtn" onclick="Id('file').click();">选择文件</button>
+    <!--file 隐藏起来  触发onchange事件-->
+    <input type="file" name="file" accept="image/png,image/jpg,image/jpeg" id="file" multiple ng-model="value1" onchange="angular.element(this).scope().valueChange()"/>
+</div>
+
+<!--图片展示区域-->
+<div class="box">
+    <!--设置默认图片-->
+    <div ng-repeat="str in images" class="imgdiv">
+        <img src="{{str}}" class="myimg">
+        <img src="./images/btn_delete02@2x.png" class="delete" ng-click="deleteCurrentImg(str)">
+    </div>
+
+</div>
+
+<script src="js/angular/angular.js"></script>
+<script src="./index.js"></script>
+
+</body>
+<script>
+    function Id(id){
+        return document.getElementById(id);
+    }
+</script>
+</html>
