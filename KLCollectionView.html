@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>pics</title>
+    <link rel="stylesheet" href="css/reset.css">
+
+    <style>
+        .pics{
+            padding: 12px;
+            font-size: 0;
+        }
+        .pics .title{
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 14px;
+            color: rgb(7,17,27);
+        }
+        .pics .pic-wrapper{
+            white-space: nowrap;
+            overflow: hidden;
+
+        }
+        .pics .pic-wrapper .pic-list{
+            font-size: 0;
+        }
+        .pics .pic-wrapper .pic-list .pic-item{
+            display: inline-block;
+            margin-right: 6px;
+            width: 120px;
+            height: 90px;
+        }
+
+        .imageView{
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: lightgray;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .imageView .delete{
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .imageView #imgshow{
+
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            left: 0;
+            top: 100px;
+        }
+
+
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="myPicsVC">
+
+<div class="pics">
+
+    <h1 class="title">
+        {{name}}
+    </h1>
+
+    <div class="pic-wrapper">
+
+        <ul class="pic-list">
+            <li class="pic-item" id="pic-id" ng-repeat="src1 in pics" ng-click="showFullImage(src1)">
+                <img ng-src= {{src1}} width="120" height="90">
+            </li>
+        </ul>
+
+    </div>
+
+</div >
+
+<div class="imageView" id="divimage" ng-show="showFullImageView">
+    <img class="delete" src="images/btn_delete02@2x.png" ng-click="changeStatus()"/>
+    <img ng-src="{{imagesSrc}}" id="imgshow"/>
+</div>
+
+</body>
+
+<script src="js/iScroll/iscroll.js"></script>
+<script src="js/iScroll/jquery-1.9.1.js"></script>
+
+<script src="js/angular/angular.js"></script>
+<script src="js/pics.js"></script>
+
+</html>
+
+
+<!--
+"pics": [
+      "http://fuss10.elemecdn.com/8/71/c5cf5715740998d5040dda6e66abfjpeg.jpeg?imageView2/1/w/180/h/180",
+      "http://fuss10.elemecdn.com/b/6c/75bd250e5ba69868f3b1178afbda3jpeg.jpeg?imageView2/1/w/180/h/180",
+      "http://fuss10.elemecdn.com/f/96/3d608c5811bc2d902fc9ab9a5baa7jpeg.jpeg?imageView2/1/w/180/h/180",
+      "http://fuss10.elemecdn.com/6/ad/779f8620ff49f701cd4c58f6448b6jpeg.jpeg?imageView2/1/w/180/h/180"
+    ],-->
